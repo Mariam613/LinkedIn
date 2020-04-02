@@ -31,33 +31,30 @@ export class NavigationComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // console.log((this.searchBox.nativeElement as HTMLInputElement).value);
     this.user = this.userService.getAll();
     this.id = parseInt(this.activateRoute.snapshot.params["id"]);
   }
-  // getValue() {
-  //   var data = (this.searchBox.nativeElement as HTMLInputElement).value;
-  //   console.log(data);
-  //   this.index = this.userService.getIndex(data);
-  //   this.userService.searchItem.next(this.index);
-  // }
+
   getValue() {
     var data = (this.searchBox.nativeElement as HTMLInputElement).value;
     console.log(data);
-    //   this.userId = parseInt(this.activatedRoute.snapshot.params["id"]);
     var id = this.userService.getIdByName(data);
     console.log(id);
-    // const user = this.userService.getUserFullDataById(id);
-    // console.log(user);
-    this.userService.searchItem.next(id);
+    if (id) {
+      this.userService.searchItem.next(id);
+    } else {
+      console.log("No Result");
+    }
   }
   onHome(user) {
-    // console.log(this.id);
     this.userService.navHome.next();
   }
   onProfile() {
-    //this.router.navigate(["/profile", user[0].id]);
-    //debugger;
     this.userService.navMe.next();
   }
+  // onChangeSearch(value) {
+  //   // debugger;
+  //   this.userService.filterSearch(value);
+  //   // console.log(value);
+  // }
 }

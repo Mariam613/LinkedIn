@@ -24,9 +24,6 @@ export class UserInfoComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // if (this.user == null) {
-    //   this.user = this.userService.getAll();
-    // }
     const id = parseInt(this.activatedRoute.snapshot.params["id"]);
 
     this.userData = this.userService.getById(id);
@@ -34,10 +31,6 @@ export class UserInfoComponent implements OnInit {
     console.log(this.userData);
     console.log(this.experData);
 
-    // this.userService.searchItem.subscribe(index => {
-    //   this.index = index;
-    //   console.log(this.index);
-    // });
     this.userService.navHome.subscribe(() => {
       debugger;
       var id = parseInt(this.activatedRoute.snapshot.params["id"]);
