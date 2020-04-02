@@ -72,6 +72,7 @@ export class UserService {
   navMe = new EventEmitter<any>();
   navHome = new EventEmitter<any>();
   getProfile = new EventEmitter<any>();
+  getProfileFromPost = new EventEmitter<any>();
 
   getAll(): User[] {
     return this.users.slice();

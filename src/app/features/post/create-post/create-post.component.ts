@@ -67,6 +67,11 @@ export class CreatePostComponent implements OnInit {
       // this.router.navigate(["profile", id]);
       // this.ngOnInit();
     });
+    this.userService.getProfileFromPost.subscribe(followerId => {
+      this.userService.currentUser = followerId;
+      console.log(followerId);
+      this.router.navigate(["/profile", this.userService.currentUser]);
+    });
   }
   getProfile() {
     this.userService.getProfile.next();
@@ -80,6 +85,12 @@ export class CreatePostComponent implements OnInit {
     this.user = this.userService.getById(i);
     // console.log(this.user);
     return this.user.name;
+  }
+  getProfileFromPost(user) {
+    let followerName = user.toElement.innerText;
+    let followerData = this.userService.getIdByName(followerName);
+    console.log(followerData);
+    this.userService.getProfileFromPost.next(followerData);
   }
 
   incrementLikes(post) {

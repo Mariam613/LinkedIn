@@ -108,7 +108,9 @@
             class="m-sb "
           />
           <div class="post-info__content">
-            <span class="link"> {{ getUserName(com.post.userId) }}</span>
+            <span class="link" (click)="getProfileFromPost($event)">
+              {{ getUserName(com.post.userId) }}</span
+            >
             <span>3,974,294 followers</span>
             <span class="time">{{ myDate | date: "medium" }}</span>
 

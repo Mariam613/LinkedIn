@@ -55,7 +55,7 @@ export class UserInfoComponent implements OnInit {
       console.log(this.userService.currentUser);
       console.log(id);
       this.router.navigate(["/profile", this.userService.currentUser]);
-      this.ngOnInit();
+      // this.ngOnInit();
     });
   }
 }
