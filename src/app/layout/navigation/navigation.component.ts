@@ -46,7 +46,7 @@ export class NavigationComponent implements OnInit {
     console.log(data);
     //   this.userId = parseInt(this.activatedRoute.snapshot.params["id"]);
     var id = this.userService.getIdByName(data);
-
+    console.log(id);
     // const user = this.userService.getUserFullDataById(id);
     // console.log(user);
     this.userService.searchItem.next(id);
