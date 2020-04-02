@@ -42,11 +42,15 @@ export class AddSectionComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.userService.navMe.subscribe(() => {
+      debugger;
+      var id = parseInt(this.activatedRoute.snapshot.params["id"]);
+      console.log(id);
+      this.userService.currentUser = id;
+      console.log(this.userService.currentUser);
+      this.router.navigate(["/profile", id]);
+    });
     this.userService.searchItem.subscribe(id => {
-      //  debugger;
-      // this.userData = userF.user;
-      // this.experData = userF.userExp;
-      // console.log(this.userData);
       this.userService.currentUser = id;
       console.log(this.userService.currentUser);
       console.log(id);
