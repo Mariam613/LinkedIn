@@ -32,7 +32,7 @@ export class UserInfoComponent implements OnInit {
     console.log(this.experData);
 
     this.userService.navHome.subscribe(() => {
-      debugger;
+      // debugger;
       var id = parseInt(this.activatedRoute.snapshot.params["id"]);
       console.log(id);
       this.userService.currentUser = id;

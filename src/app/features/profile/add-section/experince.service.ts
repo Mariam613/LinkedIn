@@ -162,8 +162,6 @@ export class ExperienceService {
     return exp;
   }
   updateExperience(exp: Experience, id) {
-    //  const ide = this.getExperienceByUserId(exp.userId).length + 1;
-
     const obj = this.getSpecExperience(exp.userId, id);
 
     obj.title = exp.title;
