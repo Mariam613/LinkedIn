@@ -2,7 +2,9 @@ import {
   Component,
   OnInit,
   ElementRef,
-  ViewChild
+  ViewChild,
+  OnChanges,
+  SimpleChanges
   // ViewChild,
   // ElementRef
   // AfterViewInit
@@ -18,7 +20,7 @@ import { Router } from "@angular/router";
   templateUrl: "./create-post.component.html",
   styleUrls: ["./create-post.component.scss"]
 })
-export class CreatePostComponent implements OnInit {
+export class CreatePostComponent implements OnInit, OnChanges {
   // community = [];
   community: Community[];
   user: User;
@@ -39,20 +41,21 @@ export class CreatePostComponent implements OnInit {
     let id = parseInt(this.route.snapshot.paramMap.get("id"));
     this.userId = id;
     this.myDate = Date.now();
-    console.log(typeof Date.now());
+    // console.log(typeof Date.now());
     // var date = (this.mydate.nativeElement as HTMLSpanElement).textContent;
     // console.log(date);
     // this.isLiked = false;
     this.community = this.communityService.getCommunityById(this.userId);
-    console.log(this.userId);
+    // console.log(this.userId);
     // console.log(id);
     this.userService.navMe.subscribe(id => {
       // debugger;
       id = parseInt(this.route.snapshot.params["id"]);
-      console.log(id);
+      // console.log(id);
       this.userService.currentUser = id;
-      console.log(this.userService.currentUser);
+      // console.log(this.userService.currentUser);
       this.router.navigate(["/profile", id]);
+      console.log(this.community);
     });
     this.userService.searchItem.subscribe(id => {
       // debugger;
@@ -78,6 +81,9 @@ export class CreatePostComponent implements OnInit {
       console.log(followerId);
       this.router.navigate(["/profile", this.userService.currentUser]);
     });
+  }
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
   }
   getProfile() {
     this.userService.getProfile.next();
@@ -114,12 +120,11 @@ export class CreatePostComponent implements OnInit {
       com.post.like = num;
       console.log(com);
       // this.Liked = com.isLiked;
-      console.log(this.community);
     }
   }
   onCreatePost(user) {
     this.router.navigate(["/add-post", this.userId]);
-    console.log(user);
+    // console.log(user);
   }
   showComments(com) {
     if (com.showComments === false) {
