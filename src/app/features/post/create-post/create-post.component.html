@@ -1,0 +1,187 @@
+<div class="home">
+  <!-- side card -->
+  <div class="left">
+    <div class="side-card">
+      <div class="side-card--header">
+        <img
+          class="side-card--header--image"
+          [src]="userService.getById(userId).imgUrlBG"
+        />
+      </div>
+      <div class="side-card--profile">
+        <img
+          class="side-card--profile--image"
+          [src]="userService.getById(userId).imgUrl"
+        />
+      </div>
+      <div class="side-card--identify">
+        <h3 class="side-card--identify--name" (click)="getProfile($event)">
+          {{ getUserName(userId) }}
+        </h3>
+        <p class="side-card--identify--title">{{ user.jopTitle }}</p>
+      </div>
+      <div class="side-card--card-info">
+        <div class="side-card--card-info--line">
+          <p class="side-card--card-info--line--text">
+            Who viewed your profile
+          </p>
+          <span class="side-card--card-info--line--num">114</span>
+        </div>
+        <div class="side-card--card-info--line">
+          <p class="side-card--card-info--line--text">Views of your post</p>
+          <span class="side-card--card-info--line--num">35</span>
+        </div>
+      </div>
+      <div class="side-card--saved-items">
+        <i class="far fa-bookmark"></i>
+        Saved items
+      </div>
+    </div>
+    <!-- side card -->
+    <!-- side card -->
+    <div class="side-card">
+      <div class="side-card--card-info">
+        <div class="side-card--card-info--bar">
+          <p class="side-card--card-info--line--text">
+            Events
+          </p>
+          <span class="side-card--card-info--line--num"
+            ><i class="fas fa-plus"></i
+          ></span>
+        </div>
+        <div class="side-card--saved-items">
+          Descover More
+        </div>
+      </div>
+      <!-- side card -->
+    </div>
+    <!-- profile -->
+
+    <!--buttons-->
+
+    <!--buttons-->
+  </div>
+  <div class="middle">
+    <div class="create-post">
+      <div class="create-post__header">
+        <a
+          routerLink="/add-post"
+          (click)="onCreatePost(user)"
+          class="btn--outline-primary f-xl bold p-lg"
+          ><i class="far fa-edit f-xl"></i>Start a post</a
+        >
+        <div class="icons">
+          <button class="btn btn--light-secondary p-xlg b-left ">
+            <i class="fa fa-camera f-l" aria-hidden="true"></i>
+          </button>
+          <button class="btn btn--light-secondary p-xlg b-left">
+            <i class="fas fa-video f-l"></i>
+          </button>
+          <button class="btn btn--light-secondary p-xlg b-left">
+            <i class="fas fa-file f-l"></i>
+          </button>
+        </div>
+      </div>
+      <div class="create-post__footer ">
+        <a
+          class=" create-post__footer link"
+          href="https://www.linkedin.com/post/new"
+          >Write an article</a
+        >
+        <span class="create-post__footer__content lighter">LinkedIn</span>
+      </div>
+    </div>
+    <!--create post-->
+    <!--post-->
+    <div
+      class="post m-b"
+      #post
+      *ngFor="let com of community; let i = index"
+      id="{{ com }}"
+    >
+      <div class="post__header">
+        <div class="post-info ">
+          <img
+            [src]="userService.getById(com.post.userId).imgUrl"
+            alt=""
+            srcset=""
+            class="m-sb "
+          />
+          <div class="post-info__content">
+            <span class="link"> {{ getUserName(com.post.userId) }}</span>
+            <span>3,974,294 followers</span>
+            <span class="time">{{ myDate | date: "medium" }}</span>
+
+            <span>Promoted</span>
+          </div>
+          <div class="post-info__button">
+            <button class="btn btn--light p-sm">
+              <i class="fa fa-plus f-l" aria-hidden="true"></i>Follow
+            </button>
+            <button class="btn btn--light-secondary btn--circle p-sm">
+              <i class="fa fa-ellipsis-h f-l" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="post__content">
+        <p>
+          {{ com.post.post }}
+        </p>
+        <img [src]="com.post.img" alt="" srcset="" />
+      </div>
+      <div class="post__footer ">
+        <div class="count-social">
+          <ul>
+            <li><i class="fa fa-thumbs-up f-l" aria-hidden="true"></i></li>
+            <li><i class="fas fa-heart f-l"></i></li>
+            <li>
+              <a href="#" class="btn--outline-primary bold">{{
+                com.post.like
+              }}</a>
+            </li>
+            <li>
+              <a href="#" class="btn--outline-primary bold"
+                >{{ com.post.comments.length }} Comments</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="social">
+          <button
+            (click)="incrementLikes(community[i].post)"
+            class="btn btn--light-secondary p-xsm f-l color "
+          >
+            <!-- <i class="fas fa-thumbs-up"></i> -->
+            <!-- <i class="far fa-thumbs-up"></i> -->
+            <i
+              [ngClass]="{
+                'far ': !isLiked,
+                'fas color': isLiked
+              }"
+              class="fa-thumbs-up p-md f-l "
+              aria-hidden="true"
+            ></i
+            >Like
+          </button>
+          <button
+            class="btn btn--light-secondary p-xsm "
+            (click)="showComments()"
+          >
+            <i class="far fa-comment-dots p-md f-l"></i>Comment
+          </button>
+          <button class="btn btn--light-secondary p-xsm ">
+            <i class="fa fa-share p-md f-l " aria-hidden="true"></i>Share
+          </button>
+        </div>
+        <!--add-comment-->
+        <app-add-comment
+          [ngClass]="{ show: isOpen, hide: !isOpen }"
+          [post]="com.post"
+        ></app-add-comment>
+      </div>
+    </div>
+  </div>
+</div>
+
+post

@@ -1,0 +1,32 @@
+<div class="section">
+  <div class="section__title">
+    <span>Experience</span>
+    <button class="btn btn--light btn--circle ">
+      <a (click)="onAdd()">
+        <i class="fa fa-plus fa-2x" aria-hidden="true"></i
+      ></a>
+    </button>
+  </div>
+  <div *ngFor="let exps of exper" class="section__container">
+    <div class="section__container__info">
+      <div class="post-info">
+        <img
+          class="section__container__img m-b"
+          [attr.Src]="exps.company.compLogo"
+          alt=""
+          srcset=""
+        />
+        <div class="post-info__content ">
+          <h2>{{ exps.title }}</h2>
+          <div>{{ exps.company.name }}</div>
+          <div>{{ exps.startDate }} - {{ exps.endDate }}</div>
+          <div>{{ exps.location }}</div>
+          <div>{{ exps.description }}</div>
+        </div>
+      </div>
+    </div>
+    <button (click)="onEdit(exps.id)" class="btn btn--light btn--circle m-2x">
+      <i class="far fa-edit"></i>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,4 @@
+@function item-height($card-height, $ratio) {
+  $res: $card-height * $ratio / 100;
+  @return $res;
+}

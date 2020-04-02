@@ -1,0 +1,64 @@
+<div class="comment">
+  <div class="comment-box">
+    <div>
+      <img
+        class="side-card--profile--image--comment"
+        [src]="userService.getById(userId).imgUrl"
+        alt=""
+        srcset=""
+      />
+    </div>
+    <div class="comment-box__form-container">
+      <form #userform="ngForm">
+        <input
+          #comment
+          ngModel
+          name="comment"
+          type="text"
+          placeholder="Add a comment..."
+          size="87"
+          (keydown.enter)="onAdd(comment)"
+        />
+      </form>
+    </div>
+  </div>
+  <div class="comments-list " *ngFor="let m of post.comments; let i = index">
+    <div>
+      <img
+        class="side-card--profile--image--comment"
+        [src]="userService.getById(m.userId).imgUrl"
+        alt=""
+        srcset=""
+      />
+    </div>
+    <div class="comments-list__header">
+      <div class="comments-list__header__top ">
+        <div class="post-info__content ">
+          <span class="link">{{ getUserName(m.userId) }}</span>
+          <span>{{ user.jopTitle }}</span>
+        </div>
+
+        <div class="comments-list__header__top__right">
+          <span class="time">{{ myDate | date: "medium" }}</span>
+          <button class="btn btn--light-secondary  p-sm">
+            <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="comments-list__header__bottom  ">
+        <!-- <p></p> -->
+        <p>{{ m.comment }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="comment-footer m-l">
+    <button class="btn btn--light-secondary p-sm ">
+      <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+    </button>
+    <button class="btn btn--light-secondary p-sm ">
+      <i class="fa fa-comment-o" aria-hidden="true"></i>
+    </button>
+  </div>
+</div>

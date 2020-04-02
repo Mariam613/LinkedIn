@@ -1,0 +1,66 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="WholeForm">
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Title of jop *</label>
+    <input [formControl]="title" class="form-control" name="'title'" />
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Company</label>
+    <select
+      [formControl]="company"
+      class="form-control"
+      id="exampleFormControlSelect1"
+      name="companies"
+    >
+      <option name="nameComp" *ngFor="let comp of companies">{{
+        comp.name
+      }}</option>
+    </select>
+    <!-- <div formArrayName="company" class="form-group">
+      <label for="exampleFormControlSelect1">Company</label>
+      <select
+        class="form-control"
+        id="exampleFormControlSelect1"
+        name="companies"
+      >
+        <option
+          [formGroupName]="i"
+          name="nameComp"
+          *ngFor="let comp of companies; let i = index"
+          ><img
+            formControlName="img"
+            name="imgComp"
+            [attr.Src]="comp.compLogo"
+            alt=""/>
+          <input formControlName="name" type="text" [value]="comp.name"
+        /></option>
+      </select>
+    </div> -->
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Location *</label>
+    <input [formControl]="location" class="form-control" name="location" />
+  </div>
+  <div class="form__section__sp__labelName ">Start year</div>
+  <input [formControl]="startDate" type="date" name="startDte" />
+  <!-- </div> -->
+  <div class="form__section__sp__labelName ">end year</div>
+  <input [formControl]="endDate" type="date" name="endDate" />
+
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Description</label>
+    <textarea
+      name="description"
+      [formControl]="description"
+      class="form-control"
+      id="exampleFormControlTextarea1"
+      rows="3"
+    ></textarea>
+  </div>
+  <p>
+    Media Add or link to external documents, photos, sites, videos, and
+    presentations.
+  </p>
+  <button class="btn " (click)="onSubmit()" type="submit">
+    Save
+  </button>
+</form>

@@ -1,0 +1,35 @@
+.count-social {
+  // margin: 0 16px;
+  padding: 12px 10px;
+  border-bottom: 1px solid #e6e9ec;
+  ul {
+    li {
+      display: inline-block;
+      list-style: none;
+      margin-left: 5px;
+    }
+    li:nth-of-type(1) {
+      color: $primary-color;
+      :hover li:nth-of-type(3) {
+        text-decoration: underline;
+      }
+    }
+    li:nth-of-type(2) {
+      color: red;
+    }
+
+    li:nth-of-type(3),
+    li:nth-of-type(4) {
+      a {
+        text-decoration: none;
+      }
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    .fa-thumbs-up,
+    .fa-gratipay {
+      font-size: larger;
+    }
+  }
+}

@@ -1,0 +1,75 @@
+<div class="profile">
+  <div class="container">
+    <div class="profile--details">
+      <div class="profile--details--background">
+        <img
+          class="profile--details--background--img "
+          [attr.Src]="userData.imgUrlBG"
+        />
+      </div>
+      <div class="profile--details--photo">
+        <img
+          class="profile--details--photo--img "
+          [attr.Src]="userData.imgUrl"
+        />
+      </div>
+      <div class="profile--details--InfoContainer">
+        <div class="profile--details--InfoContainer--info">
+          <a class="profile--details--InfoContainer--info--name">
+            {{ userData.name }}
+          </a>
+          <span class="profile--details--InfoContainer--info--jobTitle">{{
+            userData.jopTitle
+          }}</span>
+          <a class="profile--details--InfoContainer--info--location"
+            >{{ userData.location }} .</a
+          >
+          <a class="profile--details--InfoContainer--info--connection"
+            >{{ userData.connections }} .</a
+          >
+          <a class="profile--details--InfoContainer--info--contact"
+            >Contact info .</a
+          >
+          <a class="profile--details--InfoContainer--info--workPlace"
+            ><img
+          /></a>
+        </div>
+        <div class="profile--details--InfoContainer--moreBtns">
+          <div class="profile--details--InfoContainer--moreBtns--crud">
+            <button class="btn btn--primary m-2x p-lr ">
+              Add profile section
+              <i class="fa fa-caret-down" aria-hidden="true"></i>
+            </button>
+            <button class="btn btn--outline-secondary m-2x p-lr">
+              More...
+            </button>
+            <button class="btn btn--light btn--circle ">
+              <i class="far fa-edit"></i>
+            </button>
+          </div>
+          <div
+            *ngFor="let exps of experData"
+            class="profile--details--InfoContainer--moreBtns--edu"
+          >
+            <span class="profile--details--InfoContainer--moreBtns--edu--icon">
+              <img [attr.Src]="exps.company.compLogo" />
+            </span>
+            <a class="profile--details--InfoContainer--moreBtns--edu--link">
+              {{ exps.company.name }}</a
+            >
+          </div>
+          <!-- <div class="profile--details--InfoContainer--moreBtns--edu">
+            <span class="profile--details--InfoContainer--moreBtns--edu--icon">
+              <img src="assets/suez-canal.png" />
+            </span>
+            <a class="profile--details--InfoContainer--moreBtns--edu--link">
+              Suez Canal University</a
+            >
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <!--education section-->
+    <app-section [user]="user"></app-section>
+  </div>
+</div>

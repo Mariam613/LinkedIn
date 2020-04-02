@@ -1,0 +1,110 @@
+.side-card {
+  width: $card-width;
+  // height: 40%;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0.25rem 0.25rem lighten($color: $nav-background, $amount: 70%);
+  margin: 0.5rem;
+  position: relative;
+
+  &--header {
+    border-bottom: 1px solid $nav-background;
+    height: 6rem;
+    width: 100%;
+    // position: absolute;
+    // background-image: url(../../Assets/header.jpg);
+    // background-size: cover;
+    &--image {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &--profile {
+    width: item-height($card-height, 20);
+    height: 6rem;
+    border: 1px solid $nav-background;
+    border-radius: 50%;
+    position: absolute;
+    //background-image: url(../../../assets/picture.jpg);
+    //background-size: cover;
+    left: 38.3%;
+    top: 9%;
+    //padding: 1rem;
+    //margin: 1rem;
+
+    &--image {
+      height: 76.8px;
+      width: 76.8px;
+      border-radius: 50%;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -o-border-radius: 50%;
+      &--comment {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+      }
+    }
+  }
+
+  &--identify {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    // width: 100%;
+    height: 10.5rem;
+    padding-top: 5%;
+    text-align: center;
+    &--name {
+      margin-top: 34px;
+      font-size: $font-size-medium;
+    }
+    &--title {
+      font-size: $font-size-small;
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0.25rem;
+    }
+  }
+
+  &--card-info {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    // width: 100%;
+    // height: 6rem;
+    padding: 1rem;
+
+    &--bar {
+      height: 5rem;
+    }
+    &--line {
+      height: 3rem;
+      margin: 1rem;
+      &--text {
+        font-size: $font-size-small;
+        display: inline-block;
+        text-align: left;
+        &:hover {
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+
+      &--num {
+        font-size: $font-size-small;
+        display: inline-block;
+        // float: right;
+        color: $text-color;
+        &:hover {
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  &--saved-items {
+    text-align: center;
+    margin: 1rem;
+  }
+}

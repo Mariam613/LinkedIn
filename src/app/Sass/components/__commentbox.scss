@@ -1,0 +1,33 @@
+.comment-box {
+  // padding: 4px 16px 8px;
+  background-color: #fff;
+  border-top: 1px solid transparent;
+  display: flex;
+  justify-content: space-around;
+  &__avatar-image {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    background-color: #b3b6b9;
+    // padding: 3px;
+    padding: 2px;
+    .fa-user {
+      font-size: large;
+      color: #d9dde0;
+      margin-top: 4px;
+      // padding-left: 8px;
+      padding-left: 5px;
+    }
+  }
+  form {
+    input {
+      border-color: #3e3e1a38;
+      padding: 11px;
+      border-radius: 22px;
+    }
+  }
+}

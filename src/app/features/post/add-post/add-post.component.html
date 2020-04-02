@@ -1,0 +1,53 @@
+<div class="add-post container">
+  <div class="add-post__header">
+    <h2>Create Post</h2>
+    <button class="btn btn--light btn--circle btn--circle--light m-2x">
+      <i class="fa fa-times" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div class="post-info p-xxxlg">
+    <span class="nav--menu--items--icon">
+      <img [src]="userService.getById(userId).imgUrl" alt="" srcset="" />
+    </span>
+    <div class="post-info__content">
+      <span> {{ user.name }}</span>
+      <button class="btn btn--outline-secondary p-xxlg">
+        <i class="fa fa-globe" aria-hidden="true"></i>
+        Anyone<i class="fa fa-caret-down" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+  <div class="add-post__body">
+    <input
+      ngForm
+      name="post"
+      #post
+      type="text"
+      size="40"
+      placeholder="What do you think to talk about?"
+    />
+  </div>
+  <div class="add-post__footer">
+    <div class="icons">
+      <button class="btn btn--light btn--circle ">
+        <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+      </button>
+      <button class="btn btn--light-secondary p-xlg b-left ">
+        <i class="fa fa-camera" aria-hidden="true"></i>
+      </button>
+      <button class="btn btn--light-secondary p-xlg b-left">
+        <i class="fa fa-video-camera" aria-hidden="true"></i>
+      </button>
+      <button class="btn btn--light-secondary p-xlg b-left">
+        <i class="fa fa-file-text-o" aria-hidden="true"></i>
+      </button>
+      <button
+        routerLink="/home"
+        (click)="onPost(user)"
+        class="btn btn--primary p-xxlg f-r m-t"
+      >
+        Post
+      </button>
+    </div>
+  </div>
+</div>

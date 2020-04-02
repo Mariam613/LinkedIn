@@ -1,0 +1,70 @@
+<div class="header">
+  <!-- Navigation -->
+  <div class="nav">
+    <div class="nav--logo">
+      <img
+        class="nav--logo--icon"
+        src="../../../assets/images/Linkedin_icon.svg"
+      />
+    </div>
+    <div class="nav--search">
+      <a (click)="getValue($event)" class="nav--search--icon"
+        ><i class="fa fa-search fa-2x"></i>
+      </a>
+      <input
+        #search
+        class="nav--search--box"
+        size="40"
+        placeholder="Search.."
+      />
+    </div>
+    <ul class="nav--menu">
+      <li class="nav--menu--items">
+        <div class="nav--menu--items--icon">
+          <i class="fa fa-home fa-2x"></i>
+        </div>
+        <a
+          (click)="onHome(user)"
+          routerLink="/home"
+          class="nav--menu--items--link"
+        >
+          Home</a
+        >
+      </li>
+      <li class="nav--menu--items">
+        <div class="nav--menu--items--icon">
+          <i class="fa fa-users fa-2x"></i>
+        </div>
+        <a class="nav--menu--items--link">My Network</a>
+      </li>
+      <li class="nav--menu--items">
+        <div class="nav--menu--items--icon">
+          <i class="fa fa-briefcase fa-2x"></i>
+        </div>
+
+        <a class="nav--menu--items--link">Jobs</a>
+      </li>
+      <li class="nav--menu--items">
+        <div class="nav--menu--items--icon">
+          <i class="fa fa-comments fa-2x"></i>
+        </div>
+
+        <a class="nav--menu--items--link">Messagings</a>
+      </li>
+      <li class="nav--menu--items">
+        <div class="nav--menu--items--icon">
+          <i class="fa fa-bell fa-2x"></i>
+        </div>
+
+        <a class="nav--menu--items--link">Notification</a>
+      </li>
+      <li class="nav--menu--items">
+        <div class="nav--menu--items--icon">
+          <i class="fa fa-user fa-2x "></i>
+        </div>
+        <a (click)="onProfile($event)" class="nav--menu--items--link">Me</a>
+      </li>
+    </ul>
+    <!-- Navigation -->
+  </div>
+</div>
