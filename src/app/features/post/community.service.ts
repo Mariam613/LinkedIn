@@ -74,7 +74,7 @@ export class CommunityService {
       showComments: false
     },
     {
-      id: 7,
+      id: 4,
       userId: 2,
       post: {
         id: 4,
@@ -88,7 +88,7 @@ export class CommunityService {
       showComments: false
     },
     {
-      id: 4,
+      id: 5,
       userId: 3,
       post: {
         id: 5,
@@ -111,7 +111,7 @@ export class CommunityService {
       showComments: false
     },
     {
-      id: 5,
+      id: 6,
       userId: 3,
       post: {
         id: 6,
@@ -139,6 +139,7 @@ export class CommunityService {
       showComments: false
     }
   ];
+
   constructor(private userService: UserService) {}
 
   getAll(): Community[] {
