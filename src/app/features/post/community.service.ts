@@ -25,13 +25,15 @@ export class CommunityService {
           }
         ],
         like: 2
-      }
+      },
+      isLiked: false,
+      showComments: false
     },
     {
-      id: 1,
+      id: 2,
       userId: 1,
       post: {
-        id: 1,
+        id: 2,
         post: "HI I'M Using LinkedIn :d",
         userId: 3,
         img:
@@ -44,13 +46,15 @@ export class CommunityService {
           }
         ],
         like: 2
-      }
+      },
+      isLiked: false,
+      showComments: false
     },
     {
-      id: 1,
+      id: 3,
       userId: 2,
       post: {
-        id: 1,
+        id: 3,
         post:
           "By connecting with people you know on LinkedIn, you can keep in touch with them over the years and get the support you need when the time is right. One example is asking for an introduction.",
 
@@ -65,25 +69,29 @@ export class CommunityService {
           }
         ],
         like: 2
-      }
+      },
+      isLiked: false,
+      showComments: false
     },
     {
-      id: 2,
+      id: 7,
       userId: 2,
       post: {
-        id: 2,
+        id: 4,
         post: "HI I'M Using LinkedIn :d",
         userId: 2,
         img: "https://code95.com/wp-content/uploads/BLOGPOST.png",
         comments: [{ id: 2, comment: "Welcome broo", userId: 2 }],
         like: 5
-      }
+      },
+      isLiked: false,
+      showComments: false
     },
     {
-      id: 1,
+      id: 4,
       userId: 3,
       post: {
-        id: 1,
+        id: 5,
         post:
           "By connecting with people you know on LinkedIn, you can keep in touch with them over the years and get the support you need when the time is right. One example is asking for an introduction.",
 
@@ -98,13 +106,15 @@ export class CommunityService {
           }
         ],
         like: 2
-      }
+      },
+      isLiked: false,
+      showComments: false
     },
     {
-      id: 3,
+      id: 5,
       userId: 3,
       post: {
-        id: 3,
+        id: 6,
         post: "HI I'M Using LinkedIn :d",
         userId: 2,
         img:
@@ -124,7 +134,9 @@ export class CommunityService {
           }
         ],
         like: 10
-      }
+      },
+      isLiked: false,
+      showComments: false
     }
   ];
   constructor(private userService: UserService) {}

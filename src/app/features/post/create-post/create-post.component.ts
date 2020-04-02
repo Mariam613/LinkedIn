@@ -1,6 +1,8 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  ElementRef,
+  ViewChild
   // ViewChild,
   // ElementRef
   // AfterViewInit
@@ -23,7 +25,7 @@ export class CreatePostComponent implements OnInit {
   users: User[];
   userId;
   isOpen = false;
-  isLiked: boolean;
+  // Liked: boolean;
   myDate: any;
   constructor(
     public communityService: CommunityService,
@@ -31,12 +33,16 @@ export class CreatePostComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {}
+  @ViewChild("mydate", { static: false }) mydate: ElementRef;
   ngOnInit() {
     this.users = this.userService.getAll();
     let id = parseInt(this.route.snapshot.paramMap.get("id"));
     this.userId = id;
     this.myDate = Date.now();
-    this.isLiked = false;
+    console.log(typeof Date.now());
+    // var date = (this.mydate.nativeElement as HTMLSpanElement).textContent;
+    // console.log(date);
+    // this.isLiked = false;
     this.community = this.communityService.getCommunityById(this.userId);
     console.log(this.userId);
     // console.log(id);
@@ -93,27 +99,33 @@ export class CreatePostComponent implements OnInit {
     this.userService.getProfileFromPost.next(followerData);
   }
 
-  incrementLikes(post) {
-    for (let i = 0; i < this.community.length; i++) {
-      if (this.community[i].post.id === post.id && this.isLiked == false) {
-        this.community[i].post.like++;
-        this.isLiked = true;
-        console.log(this.isLiked);
-      } else if (
-        this.community[i].post.id === post.id &&
-        this.isLiked == true
-      ) {
-        this.community[i].post.like--;
-        this.isLiked = false;
-        console.log(this.isLiked);
-      }
+  incrementLikes(com) {
+    // console.log(com);
+    if (com.isLiked === false) {
+      com.isLiked = true;
+      let num = com.post.like + 1;
+      com.post.like = num;
+      console.log(com);
+      // this.Liked = com.isLiked;
+      console.log(this.community);
+    } else {
+      com.isLiked = false;
+      let num = com.post.like - 1;
+      com.post.like = num;
+      console.log(com);
+      // this.Liked = com.isLiked;
+      console.log(this.community);
     }
   }
   onCreatePost(user) {
     this.router.navigate(["/add-post", this.userId]);
     console.log(user);
   }
-  showComments() {
-    this.isOpen = true;
+  showComments(com) {
+    if (com.showComments === false) {
+      com.showComments = true;
+    } else {
+      com.showComments = false;
+    }
   }
 }
