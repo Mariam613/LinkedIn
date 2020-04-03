@@ -187,7 +187,9 @@ export class CommunityService {
         img: "",
         comments: [],
         like: 0
-      }
+      },
+      isLiked: false,
+      showComments: false
     };
     console.log(obj);
     this.community.unshift(obj);
