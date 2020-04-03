@@ -33,7 +33,7 @@ export class AddPostComponent implements OnInit {
     console.log(this.userId);
   }
   onPost(user) {
-    this.router.navigate(["/home", this.userId]);
+    debugger;
     let postid = this.community.length + 1;
     let postbody = (this.post.nativeElement as HTMLInputElement).value;
     let userId = this.userId;
@@ -41,10 +41,12 @@ export class AddPostComponent implements OnInit {
     let img: string = "";
     let comments: Comments[] = [];
     let like: number = 0;
-    let po: Post = { id: postid, post: postbody, userId, img, comments, like };
-    this.newPost = { id: postid, post: po };
+    let po: Post = { id: 20, post: postbody, userId, img, comments, like };
+    this.newPost = { id: postid, userId, post: po };
     console.log(this.newPost);
-    this.communityService.Add(this.newPost);
+    this.community.push(this.newPost);
+    console.log(this.communityService.getAll());
     console.log(this.community);
+    this.router.navigate(["/home", this.userId]);
   }
 }

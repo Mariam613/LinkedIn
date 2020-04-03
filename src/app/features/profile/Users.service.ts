@@ -2,8 +2,7 @@ import { User } from "../../_model/user";
 
 import { Injectable } from "@angular/core";
 import { EventEmitter } from "@angular/core";
-// import { Experience } from "./../../_model/experience";
-// import { Experience } from "./../../_model/experience";
+
 import { ExperienceService } from "./add-section/experince.service";
 import { ActivatedRoute } from "@angular/router";
 @Injectable({
@@ -59,15 +58,11 @@ export class UserService {
   constructor(
     private experienceService: ExperienceService,
     private activatedRoute: ActivatedRoute
-  ) {
-    // this.currentUser = parseInt(this.activatedRoute.snapshot.params.id);
-    // console.log(this.currentUser);
-  }
+  ) {}
   ngOnInit() {
     console.log(this.currentUser);
   }
 
-  //       productAdded = new EventEmitter<product>();
   searchItem = new EventEmitter<any>();
   navMe = new EventEmitter<any>();
   navHome = new EventEmitter<any>();
@@ -84,19 +79,20 @@ export class UserService {
   getIndex(name: string): number {
     const index = this.users.findIndex(a => a.name == name);
     return index;
-    // this.users.find(a => a.name === name);
   }
   getIdByName(nameUser: string) {
     console.log(nameUser);
-    //debugger;
+
     const user = this.users.find(
       a => a.name.toLowerCase() == nameUser.toLowerCase()
     );
-    // var id = user[0].id;
-    console.log(this.users.find(a => a.name == nameUser.toLowerCase()));
-    console.log(user);
-    return user.id;
-    // this.users.find(a => a.name === name);
+    if (user) {
+      console.log(this.users.find(a => a.name == nameUser.toLowerCase()));
+      console.log(user);
+      return user.id;
+    } else {
+      console.log("No Result");
+    }
   }
 
   getUserFullDataById(id) {
@@ -109,4 +105,10 @@ export class UserService {
     console.log(fullData);
     return fullData;
   }
+  // filterSearch(input) {
+  //   let res = this.users.filter(a => {
+  //     a.name.includes(input);
+  //   });
+  //   console.log(res);
+  // }
 }

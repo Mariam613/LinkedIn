@@ -4,4 +4,6 @@ export interface Community {
   id?: number;
   post?: Post;
   userId?: number;
+  isLiked?: boolean;
+  showComments?: boolean;
 }

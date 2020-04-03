@@ -112,7 +112,7 @@
               {{ getUserName(com.post.userId) }}</span
             >
             <span>3,974,294 followers</span>
-            <span class="time">{{ myDate | date: "medium" }}</span>
+            <span class="time" #date>{{ myDate | date: "medium" }}</span>
 
             <span>Promoted</span>
           </div>
@@ -151,15 +151,15 @@
         </div>
         <div class="social">
           <button
-            (click)="incrementLikes(community[i].post)"
+            (click)="incrementLikes(community[i])"
             class="btn btn--light-secondary p-xsm f-l color "
           >
             <!-- <i class="fas fa-thumbs-up"></i> -->
             <!-- <i class="far fa-thumbs-up"></i> -->
             <i
               [ngClass]="{
-                'far ': !isLiked,
-                'fas color': isLiked
+                'far ': !community[i].isLiked,
+                'fas color': community[i].isLiked
               }"
               class="fa-thumbs-up p-md f-l "
               aria-hidden="true"
@@ -168,7 +168,7 @@
           </button>
           <button
             class="btn btn--light-secondary p-xsm "
-            (click)="showComments()"
+            (click)="showComments(community[i])"
           >
             <i class="far fa-comment-dots p-md f-l"></i>Comment
           </button>
@@ -178,12 +178,13 @@
         </div>
         <!--add-comment-->
         <app-add-comment
-          [ngClass]="{ show: isOpen, hide: !isOpen }"
+          [ngClass]="{
+            show: community[i].showComments,
+            hide: !community[i].showComments
+          }"
           [post]="com.post"
         ></app-add-comment>
       </div>
     </div>
   </div>
 </div>
-
-post
