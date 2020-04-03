@@ -81,6 +81,12 @@ export class CreatePostComponent implements OnInit, OnChanges {
       console.log(followerId);
       this.router.navigate(["/profile", this.userService.currentUser]);
     });
+    this.communityService.postAdded.subscribe(userId => {
+      this.userId = userId;
+      this.community = this.communityService.getCommunityById(userId);
+
+      this.router.navigate(["/home", userId]);
+    });
   }
   ngOnChanges(changes: SimpleChanges) {
     console.log(changes);

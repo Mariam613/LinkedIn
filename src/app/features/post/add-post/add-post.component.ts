@@ -32,21 +32,13 @@ export class AddPostComponent implements OnInit {
     this.community = this.communityService.getAll();
     console.log(this.userId);
   }
-  onPost(user) {
-    debugger;
-    let postid = this.community.length + 1;
+  onPost() {
+    // debugger;
     let postbody = (this.post.nativeElement as HTMLInputElement).value;
     let userId = this.userId;
     console.log(userId);
-    let img: string = "";
-    let comments: Comments[] = [];
-    let like: number = 0;
-    let po: Post = { id: 20, post: postbody, userId, img, comments, like };
-    this.newPost = { id: postid, userId, post: po };
-    console.log(this.newPost);
-    this.community.push(this.newPost);
-    console.log(this.communityService.getAll());
-    console.log(this.community);
-    this.router.navigate(["/home", this.userId]);
+    this.communityService.addPost(postbody, userId);
+    // console.log(this.community);
+    this.communityService.postAdded.next(userId);
   }
 }

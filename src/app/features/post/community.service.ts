@@ -1,7 +1,7 @@
 // import { User } from "../../_model/user";
 import { Community } from "src/app/_model/community";
 import { UserService } from "./../profile/Users.service";
-import { Injectable } from "@angular/core";
+import { Injectable, EventEmitter } from "@angular/core";
 import { Comments } from "src/app/_model/comment";
 @Injectable({
   providedIn: "root"
@@ -141,6 +141,7 @@ export class CommunityService {
   ];
 
   constructor(private userService: UserService) {}
+  postAdded = new EventEmitter<any>();
 
   getAll(): Community[] {
     return this.community.slice();
@@ -169,5 +170,26 @@ export class CommunityService {
   }
   getCommunityById(userId: number) {
     return this.community.filter(co => co.userId == userId);
+  }
+  addPost(post, userId) {
+    let user = this.userService.getById(userId);
+    let comId = this.community.length + 1;
+    var userPosts = this.community.filter(a => a.userId == userId);
+    let postId = userPosts.length + 1;
+    var obj = {
+      id: comId,
+      userId: userId,
+      post: {
+        id: postId,
+        post: post,
+
+        userId: userId,
+        img: "",
+        comments: [],
+        like: 0
+      }
+    };
+    console.log(obj);
+    this.community.unshift(obj);
   }
 }
